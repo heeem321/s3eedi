@@ -1,0 +1,21 @@
+<h1>The posts are suppoused to be here!</h1>
+
+<% if user_signed_in? %>
+
+<p>Hello, <%= current_user.name %> - <%= link_to "Signout", destroy_user_session_path, :method => :delete %></p>
+<% else %>
+
+	<p>Hello there, if you are new <%= link_to "SignUp", new_user_registration_path %>  or  <%= link_to "Login", new_user_session_path %></p>
+
+<% end %>
+
+
+<% @posts.each do |post| %>
+	<h3><%= link_to post.title, post %></h3>
+	<p><%= post.content %></p>
+	<p><%= time_ago_in_words(post.created_at) %> ago by : <%= post.user.name %></p>
+	<% if post.user == current_user %>
+	<%= link_to "edit", edit_post_path(post) %>
+	<%= link_to "remove", post, method: :delete, data: {confirm: "Are you sure?"} %>
+	<% end %>
+<% end %>
