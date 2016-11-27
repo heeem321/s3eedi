@@ -1,3 +1,4 @@
-  class Post < ActiveRecord::Base
-  	belongs_to :user
+class Post < ActiveRecord::Base
+  belongs_to :user
+  validates_presence_of :title, :description, :amount, :user
 end

@@ -1,6 +1,20 @@
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
-<% if @post.user == current_user %>
-<%= link_to "edit", edit_post_path(@post) %>
-<%= link_to "remove", @post, method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+ <div class="container">
+    <div class="postsBlock">
+        <div class="row mb-30 mt-20">
+            <div class="col-md-12 text-center">
+                <img src="http://simpleicon.com/wp-content/uploads/pen-14.png">
+                <h3><a href="<%= post_path(@post) %>"><%= @post.title %></a></h3>
+                <p>Description</p>
+                <h4>PledgeAmount</h4>
+                <br>
+                <a href="#" class="buttonPost">Pledge</a>
+                <br>
+                <br>
+                <% if @post.user_id == current_user.id %>
+                <%= link_to "Edit", edit_post_path(@post) %>
+                <%= link_to "Remove", @post, method: :delete, data: {confirm: "Are you sure?"}, class: "text-danger" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 <%= simple_form_for @post do |f| %>
-	<%= f.input :title %>
-	<%= f.input :content %>
-	<%= f.button :submit %>
+  <%= f.input :title, label: 'Enter Your Title' %>
+  <%= f.input :description, label: 'Enter description for your project' %>
+  <%= f.input :amount, label: 'Enter how much do you need' %>
+  <button type="submit" class="btn btn-primary btn-block">ENTER</button>
 <% end %>
