@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Forum</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-
-</body>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Raleway:400, 600" rel="stylesheet">
+      <title>Forum</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <!--  navigation bar -->
+        <div class="headerBlock">
+            <div class="containerBlock">
+                <ul class="navBlock">
+                    <li><a class="active" href="<%= root_path %>">Home</a></li>
+                    <li><a href="<%= posts_path %>">Newest</a></li>
+                    <% if user_signed_in? %>
+                        <li style="float:right">
+                            <a href="<%= destroy_user_session_path %>">Hi <%= current_user.name %>, Logout</a>
+                        </li>
+                    <% else %>
+                        <li style="float:right"><a href="<%= new_user_session_path %>">Sign in</a></li>
+                    <% end %>
+                </ul>
+          </div>
+        </div>
+        <div class="contentBlock">
+            <%= render 'shared/flash_messages' %>
+            <%= yield %>
+        </div>
+        <!-- footer -->
+        <footer>
+            <div class="footerBlock">
+                <div class="containerBlock">
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>

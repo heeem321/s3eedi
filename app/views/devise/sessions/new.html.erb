@@ -1,15 +1,23 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="container mt-20">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">SIGN IN</h3>
+                </div>
+                <div class="panel-body">
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <%= f.input :email, required: false, autofocus: true, label: 'USER NAME', input_html: {placeholder: 'Enter Your Username' } %>
+                    <%= f.input :password, required: false, label: 'PASSWORD', input_html: {placeholder: 'Enter Your Password' }%>
+                    <button type="submit" class="btn btn-primary btn-block">ENTER</button>
+                    <div>
+                        <h5 style="float:right">
+                        <a href="<%= new_user_registration_path %>">SIGN UP</a>
+                        </h5>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
