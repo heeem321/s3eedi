@@ -1,15 +1,15 @@
  <div class="container">
     <div class="postsBlock">
         <h2 class="postTitle">Newest posts</h2>
-        <div class="row mb-30 mt-20">
+        <div class="row mb-30 mt-20 pa-10">
             <% @posts.each do |post| %>
-                <div class="col-md-4">
-                    <img src="http://simpleicon.com/wp-content/uploads/pen-14.png" class="img-responsive" alt="Responsive image">
+                <div class="col-md-4 text-center">
+                    <img src="<%= post.image.url(:large) %>" class="img-responsive" alt="Responsive image">
                     <h3><a href="<%= post_path(post) %>"><%= post.title %></a></h3>
                     <p>Description</p>
                     <h4>PledgeAmount</h4>
                     <br>
-                    <a href="#" class="buttonPost">Pledge</a>
+                    <a href="<%= pledge_post_path(post) %>" class="btn btn-success btn-lg">Pledge</a>
                     <br>
                     <br>
                     <% if post.user_id == current_user.id %>

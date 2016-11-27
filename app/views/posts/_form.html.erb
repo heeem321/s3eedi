@@ -1,6 +1,7 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :title, label: 'Enter Your Title' %>
-  <%= f.input :description, label: 'Enter description for your project' %>
+  <%= f.input :description, label: 'Enter description for your project', input_html: { rows: 5 } %>
   <%= f.input :amount, label: 'Enter how much do you need' %>
+  <%= f.input :image %>
   <button type="submit" class="btn btn-primary btn-block">ENTER</button>
 <% end %>
