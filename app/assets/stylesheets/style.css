@@ -12,10 +12,6 @@ html, body {
   margin: 0 auto;
   padding: 0 10px;
 }
-/*.contentBlock {
-  margin-top: 50px;
-}*/
-/*navigation bar*/
 
 .headerBlock {
   background-color: rgb(28,27,25);
@@ -208,9 +204,7 @@ footer {
   width: 100%;
   margin-top: 20px;
 }
-/*.panel-heading {
-    background-color: #333!important;
-}*/
+
 .alert {
   margin-bottom: 0 !important;
 }
@@ -218,4 +212,8 @@ footer {
   background-color: #333;
   color: #fff;
   padding: 5px 0;
+}
+.newest .project .project-thumb{
+  height: 200px;
+  max-width: 100%;
 }

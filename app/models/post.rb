@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :pledges
 
+  validates :amount, numericality: { integer_only: true, greater_than: 0 }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_presence_of :title, :description, :amount, :user
 end

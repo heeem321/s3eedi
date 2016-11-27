@@ -1,13 +1,17 @@
 <div class="container">
     <div class="postsBlock">
         <div class="row mb-30 mt-20">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center mt-20">
                 <img src="<%= @post.image.url (:large) %>">
-                <h3><a href="<%= post_path(@post) %>"><%= @post.title %></a></h3>
-                <p>Description</p>
-                <h4>PledgeAmount</h4>
+                <h3><%= @post.title %></h3>
+                <p><%= @post.description %></p>
+                <h4>Pledge Amount: $<%= @post.pledged_amount %></h4>
                 <br>
-                <a href="<%= pledge_post_path(@post) %>" class="btn btn-success btn-lg">Pledge</a>
+                    <% if (@post.pledged_amount >= @post.amount) %>
+                        <h4 class="text-success">Pledge reached!</h4>
+                    <% else %>
+                        <a href="<%= pledge_post_path(@post) %>" class="btn btn-success btn-lg">Pledge</a>
+                    <% end %>
                 <br>
                 <br>
                 <% if @post.user_id == current_user.id %>

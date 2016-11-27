@@ -1,15 +1,22 @@
- <div class="container">
+ <div class="container newest">
     <div class="postsBlock">
         <h2 class="postTitle">Newest posts</h2>
-        <div class="row mb-30 mt-20 pa-10">
+        <div class="row mb-30 mt-20 pa-10 project">
             <% @posts.each do |post| %>
                 <div class="col-md-4 text-center">
-                    <img src="<%= post.image.url(:large) %>" class="img-responsive" alt="Responsive image">
+                    <a href="<%= post_path(post) %>">
+                    <img src="<%= post.image.url(:large) %>" class="project-thumb" alt="Responsive image">
+                    </a>
                     <h3><a href="<%= post_path(post) %>"><%= post.title %></a></h3>
-                    <p>Description</p>
-                    <h4>PledgeAmount</h4>
+                    <p><%= truncate(post.description, length: 50) %></p>
+                    <h4>Pledge Amount: $<%= post.pledged_amount %></h4>
+
                     <br>
-                    <a href="<%= pledge_post_path(post) %>" class="btn btn-success btn-lg">Pledge</a>
+                    <% if (post.pledged_amount >= post.amount) %>
+                        <h4 class="text-success">Pledge reached!</h4>
+                    <% else %>
+                        <a href="<%= pledge_post_path(post) %>" class="btn btn-success btn-lg">Pledge</a>
+                    <% end %>
                     <br>
                     <br>
                     <% if post.user_id == current_user.id %>
