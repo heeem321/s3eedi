@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 20161127115802) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "user_id"
-    t.text     "description"
-    t.integer  "amount",             default: 0
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "description"
+    t.integer  "amount",             default: 0
     t.integer  "pledged_amount",     default: 0
   end
 

@@ -9,17 +9,21 @@
                     </a>
                     <h3><a href="<%= post_path(post) %>"><%= post.title %></a></h3>
                     <p><%= truncate(post.description, length: 50) %></p>
-                    <h4>Pledge Amount: $<%= post.pledged_amount %></h4>
+                    <h4>Amount to Goal: $<%= post.pledged_amount %></h4>
 
                     <br>
                     <% if (post.pledged_amount >= post.amount) %>
                         <h4 class="text-success">Pledge reached!</h4>
                     <% else %>
+                         <% if user_signed_in? %>
                         <a href="<%= pledge_post_path(post) %>" class="btn btn-success btn-lg">Pledge</a>
+                        <% else %>
+                        <p>You have to <a href="<%= new_user_session_path %>">Sign in</a> to  pledge</p>
+                        <% end %>
                     <% end %>
                     <br>
                     <br>
-                    <% if post.user_id == current_user.id %>
+                    <% if current_user == post.user.id %>
                     <%= link_to "Edit", edit_post_path(post) %>
                     <%= link_to "Remove", post, method: :delete, data: {confirm: "Are you sure?"}, class: "text-danger" %>
                     <% end %>

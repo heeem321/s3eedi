@@ -2,7 +2,11 @@
     <div class="containerBlock">
       <div class="mainText">
         <h1>Make Your Own Project</h1>
-        <a class="button-mainText" href="<%= new_post_path %>">Get started</a>
+        <% if user_signed_in? %>
+            <a class="button-mainText" href="<%= new_post_path %>">Get started</a>
+        <% else %>
+            <p>You have to <a href="<%= new_user_session_path %>">Sign in</a> to  pledge</p>
+        <% end %>
       </div>
     </div>
   </div>
